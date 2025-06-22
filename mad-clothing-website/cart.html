@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Cart - MAD Clothing</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="logo">
+      <a href="index.html"><img src="images/logo.png" alt="MAD Logo" /></a>
+    </div>
+    <div class="navbar">
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="cart.html" style="font-weight: bold;">Cart</a>
+    </div>
+  </div>
+
+  <!-- Cart Section -->
+  <section class="cart-section">
+    <h2>Your Shopping Cart</h2>
+
+    <div class="cart-item">
+      <img src="images/product1.png.png" alt="Graphic Tee" />
+      <div class="cart-details">
+        <h3>Graphic Tee</h3>
+        <p>Quantity: 1</p>
+        <p>Price: ₹799</p>
+      </div>
+    </div>
+
+    <div class="cart-item">
+      <img src="images/product2.png.png" alt="Oversized Hoodie" />
+      <div class="checkout-section">
+  <button onclick="checkout()" class="checkout-btn">Checkout</button>
+</div>
+
+      <div class="cart-details">
+        <h3>Oversized Hoodie</h3>
+        <p>Quantity: 1</p>
+        <p>Price: ₹1499</p>
+      </div>
+    </div>
+
+    <div class="cart-total">
+      <h3>Total: ₹2298</h3>
+      <a href="#" class="btn">Proceed to Checkout</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2025 MAD Clothing. Designed with ❤️ by Madhu.</p>
+  </footer>
+<script>
+  function checkout() {
+    // Clear local storage (your cart data)
+    localStorage.removeItem('cart');
+
+    // Redirect to success page
+    window.location.href = 'success.html';
+  }
+
+</script>
+</div> <!-- if any other section above -->
+
+<div id="cart-items"></div>
+
+<script>
+  const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+  const cartContainer = document.getElementById('cart-items');
+
+  if (cartItems.length === 0) {
+    cartContainer.innerHTML = "<p>Your cart is empty.</p>";
+  } else {
+    cartContainer.innerHTML = cartItems.map(item => `
+      <div class="cart-item">
+        <h4>${item.name}</h4>
+        <p>Price: ₹${item.price}</p>
+      </div>
+    `).join('');
+  }
+</script>
+</body>
+</html>

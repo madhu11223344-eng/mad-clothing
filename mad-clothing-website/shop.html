@@ -1,0 +1,125 @@
+<!-- shop.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop - MAD Clothing</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="top-bar">
+    <div class="logo">
+      <a href="index.html">
+        <img src="images/logo.png" alt="MAD Logo" />
+      </a>
+    </div>
+    <div class="navbar">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+
+  <!-- Search Bar -->
+  <div class="search-bar" style="text-align:center; margin: 20px;">
+    <input type="text" id="searchInput" placeholder="Search for products..." style="padding: 10px; width: 300px;" />
+  </div>
+
+  <!-- Product List -->
+  <section class="products">
+    <h2>All Products</h2>
+    <div class="product-grid" id="productList">
+      <!-- Products will be injected here by JS -->
+    </div>
+  </section>
+
+  <!-- Cart -->
+  <section class="cart">
+    <h2>Your Cart</h2>
+    <div id="cartItems"></div>
+    <p id="totalPrice">Total: ₹0</p>
+  </section>
+
+  <!-- Checkout Form -->
+  <section class="checkout-form">
+    <h2>Checkout</h2>
+    <form id="checkoutForm">
+      <input type="text" placeholder="Name" required /><br><br>
+      <input type="text" placeholder="Address" required /><br><br>
+      <select required>
+        <option value="">Select Payment Method</option>
+        <option value="cod">Cash on Delivery</option>
+        <option value="upi">UPI</option>
+      </select><br><br>
+      <button type="submit">Place Order</button>
+    </form>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2025 MAD Clothing. Designed with ❤️ by Madhu.</p>
+  </footer>
+
+  <script>
+    const products = [
+      { name: 'Graphic Tee', price: 799 },
+      { name: 'Oversized Hoodie', price: 1499 },
+      { name: 'Cargo Joggers', price: 1299 },
+      { name: 'Unisex Jacket', price: 1799 }
+    ];
+
+    const cart = [];
+    const productList = document.getElementById('productList');
+    const cartItems = document.getElementById('cartItems');
+    const totalPriceEl = document.getElementById('totalPrice');
+
+    function renderProducts(filtered = products) {
+      productList.innerHTML = filtered.map((item, i) => `
+        <div class="product-card">
+          <h3>${item.name}</h3>
+          <p>₹${item.price}</p>
+          <button onclick="addToCart(${i})">Add to Cart</button>
+        </div>
+      `).join('');
+    }
+
+    renderProducts();
+
+    function addToCart(index) {
+      cart.push(products[index]);
+      renderCart();
+    }
+
+    function renderCart() {
+      cartItems.innerHTML = cart.map((item, i) => `
+        <div>
+          ${item.name} - ₹${item.price} 
+          <button onclick="removeFromCart(${i})">❌</button>
+        </div>
+      `).join('');
+      const total = cart.reduce((sum, item) => sum + item.price, 0);
+      totalPriceEl.innerText = `Total: ₹${total}`;
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      renderCart();
+    }
+
+    document.getElementById('searchInput').addEventListener('input', (e) => {
+      const searchText = e.target.value.toLowerCase();
+      const filtered = products.filter(p => p.name.toLowerCase().includes(searchText));
+      renderProducts(filtered);
+    });
+
+    document.getElementById('checkoutForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert("✅ Order placed successfully!");
+      cart.length = 0;
+      renderCart();
+      this.reset();
+    });
+  </script>
+</body>
+</html>

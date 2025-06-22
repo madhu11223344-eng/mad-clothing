@@ -1,0 +1,114 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MAD Clothing</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="top-bar">
+    <div class="logo">
+      <a href="index.html"><img src="images/logo.png" alt="MAD Logo"></a>
+    </div>
+    <div class="navbar-container">
+      <div class="navbar-toggle" onclick="toggleMenu()">☰</div>
+      <div class="navbar" id="navbar">
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="cart.html">Cart</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero">
+    <div class="hero-text">
+      <div class="hero-content">
+        <h1>Discover Your Style</h1>
+        <p>Bold fashion for bold souls. MAD collections now live.</p>
+      </div>
+      <a href="shop.html" class="btn">Shop Now +</a>
+    </div>
+  </div>
+
+  <section class="products">
+  <h2>Our Collections</h2>
+
+  <!-- Filter Tabs -->
+  <div class="filter-tabs">
+    <button onclick="filterCollection('all')" class="active">All</button>
+    <button onclick="filterCollection('streetwear')">Streetwear</button>
+    <button onclick="filterCollection('summer')">Summer</button>
+    <button onclick="filterCollection('mad-originals')">MAD Originals</button>
+  </div>
+
+  <!-- Streetwear Collection -->
+  <div class="collection streetwear">
+    <h3>Streetwear Collection</h3>
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="images/products/streetwear/graphic-tee.png.png" alt="Graphic Tee">
+        <h4>Graphic Tee</h4>
+        <p>₹799</p>
+      </div>
+      <div class="product-card">
+        <img src="images/products/streetwear/hoodie.png.png" alt="Oversized Hoodie">
+        <h4>Oversized Hoodie</h4>
+        <p>₹1499</p>
+      </div>
+    </div>
+    <a href="#" class="view-all">View All Streetwear →</a>
+  </div>
+
+  <!-- Summer Collection -->
+  <div class="collection summer">
+    <h3>Summer Collection</h3>
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="images/products/summer/tank-top.png.png" alt="Tank Top">
+        <h4>Sleeveless Tank</h4>
+        <p>₹699</p>
+      </div>
+      <div class="product-card">
+        <img src="images/products/summer/shorts.png.png" alt="Cotton Shorts">
+        <h4>Cotton Shorts</h4>
+        <p>₹999</p>
+      </div>
+    </div>
+    <a href="#" class="view-all">View All Summer →</a>
+  </div>
+
+  <!-- MAD Originals -->
+  <div class="collection mad-originals">
+    <h3>MAD Originals</h3>
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="images/products/mad-originals/mad-logo-tee.png.png" alt="MAD Logo Tee">
+        <h4>MAD Logo Tee</h4>
+        <p>₹899</p>
+      </div>
+      <div class="product-card">
+        <img src="images/products/mad-originals/mad-cap.png.png" alt="MAD Cap">
+
+        <h4>MAD Cap</h4>
+        <p>₹499</p>
+      </div>
+    </div>
+    <a href="#" class="view-all">View All Originals →</a>
+  </div>
+</section>
+
+
+  <footer class="footer">
+    <p>&copy; 2025 MAD Clothing. Designed with ❤️ by Madhu.</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("navbar").classList.toggle("show");
+    }
+  </script>
+</body>
+</html>
